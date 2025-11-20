@@ -29,7 +29,7 @@ public class ToolCreation implements ItemCreationStrategy
     public int requiredNumberOfValues()
     {
         // What is the correct return value?
-        return -1;
+        return 6;
     }
 
     @SuppressWarnings({
@@ -42,6 +42,12 @@ public class ToolCreation implements ItemCreationStrategy
         Tool tool = new Tool();
 
         // Call the appropriate setters...
+        tool.setName(tokens[0]);
+        tool.setDurability((int) Integer.parseInt(tokens[1]));
+        tool.setSpeed((int) Integer.parseInt(tokens[2]));
+        tool.setMaterial(tokens[3]);
+        tool.setModifier(tokens[4]);
+        tool.setModifierLevel((int) Integer.parseInt(tokens[5]));
 
         return tool;
     }
@@ -50,6 +56,16 @@ public class ToolCreation implements ItemCreationStrategy
     public Item fromExisting(final Item original)
     {
         // Maybe clone original...
-        return null;
+        Tool source = (Tool) original;
+        Tool cpy = new Tool();
+        
+        cpy.setDurability(source.getDurability());
+        cpy.setSpeed(source.getSpeed());
+        cpy.setMaterial(source.getMaterial());
+        cpy.setModifier(source.getModifier());
+        cpy.setModifierLevel(source.getModifierLevel());
+        cpy.setName(source.getName());
+
+        return cpy;
     }
 }

@@ -1,5 +1,7 @@
 package edu.odu.cs.cs330.items;
 
+import java.util.Objects;
+
 /**
  * This class represents one tool--as found in most video games. This includes
  * pickaxes and shovels.
@@ -75,6 +77,13 @@ public class Tool extends Equippable implements Item {
         Tool cpy = new Tool();
 
         // Refer to the previous assignment
+        cpy.setDurability(getDurability());
+        cpy.setElement(getElement());
+        cpy.setMaterial(getElement());
+        cpy.setModifier(getModifier());
+        cpy.setModifierLevel(getModifierLevel());
+        cpy.setName(getName());
+        cpy.setSpeed(getSpeed());
 
         return cpy;
     }
@@ -95,7 +104,13 @@ public class Tool extends Equippable implements Item {
         Tool rhsItem = (Tool) rhs;
 
         // Refer to the previous assignment
-        return false;
+        return this.name.equals(rhsItem.name)
+            && this.getMaterial().equals(rhsItem.getMaterial())
+            && this.getModifier().equals(rhsItem.getModifier())
+            && this.getModifierLevel() == rhsItem.getModifierLevel()
+            && this.getElement().equals(rhsItem.getElement())
+            && this.getSpeed() == rhsItem.getSpeed()
+            && this.getDurability() == rhsItem.getDurability();
     }
 
     /**
@@ -106,7 +121,13 @@ public class Tool extends Equippable implements Item {
     public int hashCode()
     {
         // Refer to the previous assignment
-        return -1;
+        return Objects.hash(
+            this.getName(),
+            this.getSpeed(),
+            this.getMaterial(),
+            this.getModifier(),
+            this.getModifierLevel()
+        );
     }
 
     /**
@@ -115,6 +136,12 @@ public class Tool extends Equippable implements Item {
     @Override
     public String toString()
     {
-        return "  Refer to the previous assignment...";
+        return String.format(FMT_STR, 
+            getName(),
+            getDurability(),
+            getSpeed(),
+            getMaterial(),
+            getModifier(), getModifierLevel()
+        );
     }
 }
