@@ -44,7 +44,7 @@ public class ConsumableCreation implements ItemCreationStrategy
         // Call the appropriate setters...
         consumable.setName(tokens[0]);
         consumable.setEffect(tokens[1]);
-        consumable.setNumberOfUses((int) Integer.parseInt(tokens[2]));
+        consumable.setNumberOfUses(Integer.parseInt(tokens[2]));
 
         return consumable;
     }

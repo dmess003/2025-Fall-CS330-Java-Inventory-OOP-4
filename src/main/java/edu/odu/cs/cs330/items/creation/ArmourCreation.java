@@ -44,10 +44,10 @@ public class ArmourCreation implements ItemCreationStrategy
         // Call the appropriate setters...
         armour.setName(tokens[0]);
         armour.setMaterial(tokens[1]);
-        armour.setDurability((int) Integer.parseInt(tokens[2]));
-        armour.setDefense((int) Integer.parseInt(tokens[3]));
+        armour.setDurability(Integer.parseInt(tokens[2]));
+        armour.setDefense(Integer.parseInt(tokens[3]));
         armour.setModifier(tokens[4]);
-        armour.setModifierLevel((int) Integer.parseInt(tokens[5]));
+        armour.setModifierLevel(Integer.parseInt(tokens[5]));
         armour.setElement(tokens[6]);
 
         return armour;
