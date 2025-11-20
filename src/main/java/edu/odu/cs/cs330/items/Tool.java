@@ -77,13 +77,12 @@ public class Tool extends Equippable implements Item {
         Tool cpy = new Tool();
 
         // Refer to the previous assignment
-        cpy.setDurability(getDurability());
-        cpy.setElement(getElement());
-        cpy.setMaterial(getElement());
-        cpy.setModifier(getModifier());
-        cpy.setModifierLevel(getModifierLevel());
-        cpy.setName(getName());
-        cpy.setSpeed(getSpeed());
+        cpy.setName(this.name);
+        cpy.setDurability(this.getDurability());
+        cpy.setSpeed(this.speed);
+        cpy.setMaterial(this.getMaterial());
+        cpy.setModifier(this.getModifier());
+        cpy.setModifierLevel(this.getModifierLevel());
 
         return cpy;
     }
@@ -104,13 +103,17 @@ public class Tool extends Equippable implements Item {
         Tool rhsItem = (Tool) rhs;
 
         // Refer to the previous assignment
-        return this.name.equals(rhsItem.name)
-            && this.getMaterial().equals(rhsItem.getMaterial())
-            && this.getModifier().equals(rhsItem.getModifier())
-            && this.getModifierLevel() == rhsItem.getModifierLevel()
-            && this.getElement().equals(rhsItem.getElement())
-            && this.getSpeed() == rhsItem.getSpeed()
-            && this.getDurability() == rhsItem.getDurability();
+        if (
+            rhsItem.getName().equals(this.getName()) &&
+            rhsItem.getSpeed() == this.getSpeed() &&
+            rhsItem.getMaterial().equals(this.getMaterial()) &&
+            rhsItem.getModifier().equals(this.getModifier()) &&
+            rhsItem.getModifierLevel() == this.getModifierLevel())
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -121,13 +124,15 @@ public class Tool extends Equippable implements Item {
     public int hashCode()
     {
         // Refer to the previous assignment
-        return Objects.hash(
-            this.getName(),
-            this.getSpeed(),
-            this.getMaterial(),
-            this.getModifier(),
-            this.getModifierLevel()
-        );
+        int result = 0;
+
+        result += this.getName().hashCode();
+        result += this.getSpeed();
+        result += this.getMaterial().hashCode();
+        result += this.getModifier().hashCode();
+        result += this.getModifierLevel();
+
+        return result;
     }
 
     /**

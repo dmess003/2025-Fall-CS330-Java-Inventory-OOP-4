@@ -147,8 +147,7 @@ public class Consumable implements Item {
 
         // Refer to the previous assignment
         return this.name.equals(rhsItem.name)
-            && this.getEffect().equals(rhsItem.getEffect())
-            && this.getNumberOfUses() == (rhsItem.getNumberOfUses());
+            && this.effect.equals(rhsItem.effect);
     }
 
     /**
